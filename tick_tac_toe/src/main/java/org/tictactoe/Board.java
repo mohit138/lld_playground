@@ -13,7 +13,7 @@ import org.tictactoe.enums.Result;
  * It is also not able to detect early draws, and only draws when all squares are filled
  */
 public class Board {
-    int boardSize;
+    int boardSize = 3;
     int[][] board;
     Result result;
     private Player currentPlayer;
@@ -22,7 +22,6 @@ public class Board {
     private int moveCount;
 
     Board(){
-        boardSize=3;
         board = new int[boardSize][boardSize];
         // board[][] => 0 - no player, 1 - player 1 played, -1 - player 2 played
         for(int i=0;i<boardSize;i++){
@@ -34,6 +33,11 @@ public class Board {
         currentPlayer=Player.FIRST;
 
         moveCount=0;
+    }
+
+    Board(Integer boardSize){
+        this();
+        this.boardSize = boardSize;
     }
 
     void printBoard(){
