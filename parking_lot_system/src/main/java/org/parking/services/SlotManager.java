@@ -1,24 +1,18 @@
 package org.parking.services;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.parking.models.Slot;
 import org.parking.models.SlotStorage;
 import org.parking.models.enums.SlotType;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Getter
 public class SlotManager {
 
     SlotStorage slotStorage = SlotStorage.getInstance();
 
-    public synchronized Slot getSlot(SlotType slotType) throws Exception {
+    public synchronized Slot getSlot(SlotType slotType){
         if(!slotStorage.hasSlot(slotType)){
-            throw new Exception("No Slot Available");
+            throw new RuntimeException("No Slot Available");
         }
         Slot slotToAssign = slotStorage.getAvailableSlots().get(slotType).iterator().next();
         slotStorage.getAvailableSlots().get(slotType).remove(slotToAssign);
