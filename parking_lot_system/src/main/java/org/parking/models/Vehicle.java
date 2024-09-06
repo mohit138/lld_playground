@@ -8,7 +8,6 @@ import org.parking.models.enums.VehicleType;
 import org.parking.utils.VehicleSlotPermissions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @ToString

@@ -1,6 +1,7 @@
 package org.parking.models;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,8 @@ public class Ticket {
     LocalDateTime entryTime;
     LocalDateTime exitTime;
     boolean isActive;
+    @Setter
+    Integer fees;
 
 
     public Ticket(Vehicle vehicle, Slot slot){
@@ -24,6 +27,7 @@ public class Ticket {
         this.slot = slot;
         entryTime = LocalDateTime.now();
         isActive=true;
+        fees = null;
     }
 
     public void makeInactive(){

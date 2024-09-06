@@ -1,16 +1,14 @@
 package org.parking.services;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.parking.models.*;
-import org.parking.models.enums.SlotType;
 import org.parking.utils.Pricing;
-import org.parking.utils.VehicleSlotPermissions;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class TicketManager {
 
+    @Getter
     TicketStorage ticketStorage = TicketStorage.getInstance();
 
     public TicketManager(SlotManager slotManager){
@@ -38,10 +36,11 @@ public class TicketManager {
     }
 
     public Integer getParkingFee(Ticket ticket) throws Exception {
-        ticket.makeInactive();
         slotManager.freeSlot(ticket.getSlot());
         ticketStorage.makeTicketInactive(ticket.getId());
-        return Pricing.calculateFees(ticket);
+        Integer fees =  Pricing.calculateFees(ticket);
+        ticketStorage.addFeesToTicket(ticket.getId(), fees);
+        return fees;
     }
 
 }

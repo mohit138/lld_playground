@@ -1,7 +1,5 @@
 package org.parking.models;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 import org.parking.models.enums.SlotType;

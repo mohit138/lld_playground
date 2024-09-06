@@ -1,7 +1,6 @@
 package org.parking.models;
 
 import lombok.Getter;
-import lombok.ToString;
 import org.parking.models.enums.SlotType;
 
 import java.util.HashMap;

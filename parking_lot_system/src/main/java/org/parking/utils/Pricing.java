@@ -6,7 +6,7 @@ import java.time.Duration;
 
 public final class Pricing {
 
-    static final int SIXTY_MINUTES = 60;
+    // static final int SIXTY_MINUTES = 60;
 
     public static Integer calculateFees(Ticket ticket){
         int baseFee = ticket.getVehicle().getVehicleType().getBaseFee();

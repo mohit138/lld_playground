@@ -1,43 +1,63 @@
 package org.parking;
 
-import org.parking.models.Slot;
-import org.parking.models.SlotStorage;
-import org.parking.models.Ticket;
-import org.parking.models.Vehicle;
+import org.parking.controller.ParkingController;
 import org.parking.models.enums.SlotType;
 import org.parking.models.enums.VehicleType;
-import org.parking.models.implementations.slots.LargeSlot;
-import org.parking.models.implementations.slots.MediumSlot;
-import org.parking.models.implementations.slots.SmallSlot;
-import org.parking.services.SlotManager;
-import org.parking.services.TicketManager;
 
-import java.lang.invoke.CallSite;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalUnit;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        // TESTING
+
+        ParkingController parkingController = new ParkingController();
+
+        try{
+            parkingController.addSlots(SlotType.SMALL, 5);
+            parkingController.addSlots(SlotType.MEDIUM, 2);
+            parkingController.addSlots(SlotType.LARGE, 3);
+
+            System.out.println(parkingController.registerAndEnterVehicle("bike-1", VehicleType.MOTORBIKE));
+            System.out.println(parkingController.registerAndEnterVehicle("bike-2", VehicleType.MOTORBIKE));
+            System.out.println(parkingController.registerAndEnterVehicle("car-1", VehicleType.CAR));
+            System.out.println(parkingController.registerAndEnterVehicle("car-2", VehicleType.CAR));
+            System.out.println(parkingController.registerAndEnterVehicle("car-3", VehicleType.CAR));
+            System.out.println(parkingController.registerAndEnterVehicle("bus-1", VehicleType.BUS));
+            System.out.println(parkingController.registerAndEnterVehicle("bus-2", VehicleType.BUS));
+
+            System.out.println(parkingController.printTicketDetails(2));
+
+            System.out.println(parkingController.isSlotAvailable(VehicleType.MOTORBIKE));
+            System.out.println(parkingController.isSlotAvailable(VehicleType.BUS));
+
+            Thread.sleep(125000);
+            System.out.println(parkingController.exitVehicleAndGiveFees(7));
+
+            Thread.sleep(65000);
+            System.out.println(parkingController.exitVehicleAndGiveFees(2));
+
+            System.out.println(parkingController.getFeesForTicketId(7));
+            System.out.println(parkingController.getFeesForTicketId(3));
 
 
+            parkingController.printAllActiveTickets();
+
+        }catch(InterruptedException e){
+            throw new RuntimeException(e);
+        }
 
 
+//        SlotManager slotManager = new SlotManager();
+//        slotManager.getSlotStorage().addSlot(new SmallSlot());
+//        slotManager.getSlotStorage().addSlot(new MediumSlot());
+//        slotManager.getSlotStorage().addSlot(new SmallSlot());
+//        slotManager.getSlotStorage().addSlot(new MediumSlot());
+//        slotManager.getSlotStorage().addSlot(new LargeSlot());
+//
+//        SlotStorage.getInstance().printAllAvailableSlots();
+//        System.out.println();
 
-
-        SlotManager slotManager = new SlotManager();
-        slotManager.getSlotStorage().addSlot(new SmallSlot());
-        slotManager.getSlotStorage().addSlot(new MediumSlot());
-        slotManager.getSlotStorage().addSlot(new SmallSlot());
-        slotManager.getSlotStorage().addSlot(new MediumSlot());
-        slotManager.getSlotStorage().addSlot(new LargeSlot());
-
-        SlotStorage.getInstance().printAllAvailableSlots();
-        System.out.println();
 //        // SLOT MANAGER TESTING
 //        Slot bikeSlot = null;
 //        try {
@@ -57,25 +77,44 @@ public class Main {
 //        System.out.println();
 //        SlotStorage.getInstance().printAllAvailableSlots();
 
-        //TICKET MANAGER TEST
-        TicketManager ticketManager = new TicketManager(slotManager);
-        Vehicle vehicle = new Vehicle("abc123", VehicleType.BUS);
-        Ticket ticket;
-        try {
-            ticket = ticketManager.generateTicket(vehicle);
-            SlotStorage.getInstance().printAllAvailableSlots();
-            System.out.println();
-            Thread.sleep(185000);
-            Integer fee = ticketManager.getParkingFee(ticket);
-            System.out.println("Fee is "+fee);
-            System.out.println();
-            System.out.println(ticket);
-            System.out.println();
-            SlotStorage.getInstance().printAllAvailableSlots();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+//        //TICKET MANAGER TEST
+//        TicketManager ticketManager = new TicketManager(slotManager);
+//        Vehicle vehicle = new Vehicle("abc123", VehicleType.BUS);
+//        Ticket ticket;
+//        try {
+//            ticket = ticketManager.generateTicket(vehicle);
+//            SlotStorage.getInstance().printAllAvailableSlots();
+//            System.out.println();
+//            Thread.sleep(185000);
+//            Integer fee = ticketManager.getParkingFee(ticket);
+//            System.out.println("Fee is "+fee);
+//            System.out.println();
+//            System.out.println(ticket);
+//            System.out.println();
+//            SlotStorage.getInstance().printAllAvailableSlots();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+
+
+    }
+
+    public static SlotType getSlotType(String typeStr){
+        if(typeStr.equals("S")){
+            return SlotType.SMALL;
+        }else if(typeStr.equals("M")){
+            return SlotType.MEDIUM;
+        }else{
+            return SlotType.LARGE;
         }
-
-
+    }
+    public static VehicleType getVehicleType(String typeStr){
+        if(typeStr.equals("M")){
+            return VehicleType.MOTORBIKE;
+        }else if(typeStr.equals("C")){
+            return VehicleType.CAR;
+        }else{
+            return VehicleType.BUS;
+        }
     }
 }

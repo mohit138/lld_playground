@@ -1,10 +1,8 @@
 package org.parking.models;
 
 import lombok.Getter;
-import org.parking.models.enums.SlotType;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 @Getter
 public class TicketStorage {
@@ -26,6 +24,16 @@ public class TicketStorage {
         return ticketStorage;
     }
 
+    public Ticket getTicketById(Integer ticketId) throws Exception {
+        if(activeTickets.containsKey(ticketId)){
+            return activeTickets.get(ticketId);
+        }
+        if(inActiveTickets.containsKey(ticketId)){
+            return inActiveTickets.get(ticketId);
+        }
+        throw new Exception("Invalid TicketId.");
+    }
+
     public void addTicket(Ticket ticket) throws Exception {
         if(activeTickets.containsKey(ticket.getId())){
             throw new Exception("Ticket is already active");
@@ -41,7 +49,24 @@ public class TicketStorage {
             throw new Exception("Invalid Ticket: Ticket is already an Inactive Ticket.");
         }
         Ticket ticket = activeTickets.get(ticketId);
+        ticket.makeInactive();
         activeTickets.remove(ticketId);
         inActiveTickets.put(ticketId, ticket);
+    }
+
+    public void addFeesToTicket(Integer ticketId, Integer fees){
+        if(activeTickets.containsKey(ticketId)){
+            activeTickets.get(ticketId).setFees(fees);
+        }
+        if(inActiveTickets.containsKey(ticketId)){
+            inActiveTickets.get(ticketId).setFees(fees);
+        }
+    }
+
+    public void printAllAvailableTickets(){
+        activeTickets.forEach((ticketId, ticket)->{
+            System.out.println("Ticket ID - "+ticketId);
+            System.out.println(ticket);
+        });
     }
 }
