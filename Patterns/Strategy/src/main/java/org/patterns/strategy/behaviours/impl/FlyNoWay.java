@@ -1,6 +1,6 @@
-package org.patterns.isahasa.behaviours.impl;
+package org.patterns.strategy.behaviours.impl;
 
-import org.patterns.isahasa.behaviours.FlyBehaviours;
+import org.patterns.strategy.behaviours.FlyBehaviours;
 
 public class FlyNoWay implements FlyBehaviours {
 

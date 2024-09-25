@@ -1,7 +1,7 @@
-package org.patterns.isahasa;
+package org.patterns.strategy;
 
-import org.patterns.isahasa.behaviours.FlyBehaviours;
-import org.patterns.isahasa.behaviours.QuackBehaviour;
+import org.patterns.strategy.behaviours.FlyBehaviours;
+import org.patterns.strategy.behaviours.QuackBehaviour;
 
 public abstract class Duck {
 

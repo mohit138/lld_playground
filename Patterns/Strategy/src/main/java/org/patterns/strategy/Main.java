@@ -1,6 +1,6 @@
-package org.patterns.isahasa;
+package org.patterns.strategy;
 
-import org.patterns.isahasa.behaviours.impl.FlyRocketPowered;
+import org.patterns.strategy.behaviours.impl.FlyRocketPowered;
 
 public class Main {
     public static void main(String[] args) {

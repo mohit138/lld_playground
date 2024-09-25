@@ -1,7 +1,7 @@
-package org.patterns.isahasa;
+package org.patterns.strategy;
 
-import org.patterns.isahasa.behaviours.impl.FlyNoWay;
-import org.patterns.isahasa.behaviours.impl.Quack;
+import org.patterns.strategy.behaviours.impl.FlyNoWay;
+import org.patterns.strategy.behaviours.impl.Quack;
 
 public class ModelDuck extends Duck{
     public ModelDuck(){

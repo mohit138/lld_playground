@@ -1,7 +1,7 @@
-package org.patterns.isahasa;
+package org.patterns.strategy;
 
-import org.patterns.isahasa.behaviours.impl.FlyWithWings;
-import org.patterns.isahasa.behaviours.impl.Quack;
+import org.patterns.strategy.behaviours.impl.FlyWithWings;
+import org.patterns.strategy.behaviours.impl.Quack;
 
 public class MallardDuck extends Duck{
 

@@ -1,6 +1,6 @@
-package org.patterns.isahasa.behaviours.impl;
+package org.patterns.strategy.behaviours.impl;
 
-import org.patterns.isahasa.behaviours.QuackBehaviour;
+import org.patterns.strategy.behaviours.QuackBehaviour;
 
 public class Squeak implements QuackBehaviour {
 
