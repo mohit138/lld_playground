@@ -2,6 +2,7 @@ package org.grokking.elevator.buttons;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.grokking.elevator.enums.Direction;
 
 @Getter
 @Setter
