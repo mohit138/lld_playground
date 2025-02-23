@@ -1,4 +1,4 @@
-package org.grokking.library-managemnt;
+package org.grokking.librarymanagemnt;
 
 public class Main {
     public static void main(String[] args) {
