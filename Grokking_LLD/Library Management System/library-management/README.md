@@ -16,6 +16,6 @@
 
 Class Diagram ( Rough )
 
-https://excalidraw.com/#json=nln-m3KgT0t82EOypfOCW,SVaHnXpDMK-DFjgk1rBJbA
+https://excalidraw.com/#json=hZnwnwKvo9EGHSJJxEspg,iEa29oFl4wKlGJHGFYUNig 
 (potentially expired)
 ![library_managemnt_classDiag.png](library_managemnt_classDiag.png)
