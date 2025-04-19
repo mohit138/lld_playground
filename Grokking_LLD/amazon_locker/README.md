@@ -70,4 +70,4 @@ Assumptions:
 * There is a service which is responsible for notifications
 
 Main Class Code in Action:
-![output.png](output.png)
+![output.png](run_output.png)
