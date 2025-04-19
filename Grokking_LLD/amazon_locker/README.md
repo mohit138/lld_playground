@@ -64,3 +64,10 @@
 * Deliver Order
 * PackageOverdueHandler
 
+Assumptions:
+
+* Package creation is managed by some other service
+* There is a service which is responsible for notifications
+
+Main Class Code in Action:
+![output.png](output.png)
