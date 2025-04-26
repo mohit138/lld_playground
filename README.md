@@ -8,4 +8,20 @@ Following examples are implemented :
 * Battle Ship Game
 * LRU Cache
 * Tik Tac Toe
-* 
+* Parking-lot
+
+Easy Fundamental Examples
+* HashMap Impl
+
+Patterns
+* Decorator
+* Observer
+* Strategy
+* Factory
+  * Simple Factory
+
+Grokking-LLD
+* Elevator
+* Parking Lot
+* Library
+* Amazon Locker
